@@ -24,6 +24,20 @@ const double PI = std::acos(-1);
 uint32_t Mock_Tx_Power_Register = 500;
 uint32_t Mock_Jitter_Register = 98;
 
+enum GalacticSignalType {
+    COSMIC_BACKGROUND_NOISE = 0,
+    PULSAR_NEUTRON_EMISSION = 1,
+    FAST_RADIO_BURST        = 2,
+    INTELLIGENT_TECHNOSIGNATURE = 3
+};
+
+struct GalacticSignal {
+    GalacticSignalType type;
+    double frequency_center_ghz;
+    double bandwidth_mhz;
+    double drift_rate_hz_sec;
+};
+
 class TelemetryLogger {
 private:
     std::ofstream log_file;
@@ -76,6 +90,27 @@ public:
         return false;
     }
 };
+
+GalacticSignal intercept_galactic_space_sector(int sector_id) {
+    GalacticSignal intercepted_beam;
+    if (sector_id % 7 == 0) {
+        intercepted_beam.type = INTELLIGENT_TECHNOSIGNATURE;
+        intercepted_beam.frequency_center_ghz = 8.4192;
+        intercepted_beam.bandwidth_mhz = 0.001;
+        intercepted_beam.drift_rate_hz_sec = -0.15;
+    } else if (sector_id % 3 == 0) {
+        intercepted_beam.type = PULSAR_NEUTRON_EMISSION;
+        intercepted_beam.frequency_center_ghz = 1.420;
+        intercepted_beam.bandwidth_mhz = 50.0;
+        intercepted_beam.drift_rate_hz_sec = 0.0;
+    } else {
+        intercepted_beam.type = COSMIC_BACKGROUND_NOISE;
+        intercepted_beam.frequency_center_ghz = 2.725;
+        intercepted_beam.bandwidth_mhz = 500.0;
+        intercepted_beam.drift_rate_hz_sec = 0.0;
+    }
+    return intercepted_beam;
+}
 
 double calculate_atmospheric_loss(const std::string& planet, double distance_km, double freq_ghz) {
     double alpha = 0.05; 
@@ -130,43 +165,47 @@ std::vector<uint8_t> serialize_ccsds_packet(uint16_t apid, uint16_t seq_count, c
 
 int main(int argc, char* argv[]) {
     if (argc < 3) {
-        std::cout << "========================================================\n"
-                  << "     NASA ULTIMATE QUANTUM-SAFE COGNITIVE ENGINE Core   \n"
-                  << "========================================================\n"
-                  << "Usage: ./nasa_ultimate_core <PLANET> <DISTANCE_KM>\n";
+        std::cout << "Usage: ./nasa_ultimate_core <PLANET> <DISTANCE_KM> [SECTOR_ID]\n";
         return 1;
     }
 
     std::string planet = argv[1];
     double distance = std::stod(argv[2]);
+    int sector_id = (argc >= 4) ? std::stoi(argv[3]) : 14;
 
     TelemetryLogger logger("nasa_mission_telemetry.log");
     CognitiveFrequencyHopper ai_rf_manager;
 
-    logger.log_event("SYSTEM", "=== NASA COGNITIVE RADIO CHASSIS ACTIVATED ===");
-    logger.log_event("HIL_SIM", "Deterministic timing secured. Jitter: " + std::to_string(Mock_Jitter_Register) + " ns.");
+    logger.log_event("SYSTEM", "=== NASA COGNITIVE QUANTUM ENGINE ACTIVATED ===");
+
+    // Galaktik Sinyal Taraması
+    GalacticSignal signal = intercept_galactic_space_sector(sector_id);
+    if (signal.type == INTELLIGENT_TECHNOSIGNATURE) {
+        logger.log_event("GALACTIC_INTEL", "ANOMALY DETECTED! Type: TECHNOSIGNATURE | Freq: " + 
+            std::to_string(signal.frequency_center_ghz) + " GHz | Drift: " + 
+            std::to_string(signal.drift_rate_hz_sec) + " Hz/s");
+    } else {
+        logger.log_event("GALACTIC_INTEL", "Sector " + std::to_string(sector_id) + " scanned. Background noise nominal.");
+    }
 
     double simulation_cosmic_noise_db = 38.4; 
     ai_rf_manager.evaluate_spectrum_interference(simulation_cosmic_noise_db, logger);
     
     double active_frequency = ai_rf_manager.get_current_frequency();
-
     double loss = calculate_atmospheric_loss(planet, distance, active_frequency);
-    logger.log_event("ATMOSPHERE", "Path loss dynamic calculation at " + std::to_string(active_frequency) + " GHz: " + std::to_string(loss) + " dB");
+    logger.log_event("ATMOSPHERE", "Path loss at " + std::to_string(active_frequency) + " GHz: " + std::to_string(loss) + " dB");
 
     Mock_Tx_Power_Register = static_cast<uint32_t>(500 * std::pow(10.0, loss / 10.0));
     if (Mock_Tx_Power_Register > 50000) Mock_Tx_Power_Register = 50000;
-    logger.log_event("HARDWARE", "Power Amplifier Register overriden to: " + std::to_string(Mock_Tx_Power_Register) + " mW");
+    logger.log_event("HARDWARE", "Power Amplifier Register set to: " + std::to_string(Mock_Tx_Power_Register) + " mW");
 
     std::vector<Complex> buf(64, Complex(1.0, 0.0));
     execute_mission_fft(buf);
     logger.log_event("DSP_CORE", "Cooley-Tukey inversion deployed on cognitive carrier wave.");
-    logger.log_event("AI_NEURAL", "AI Spectrum State: NOISE MITIGATED VIA COGNITIVE HOPPING.");
 
-    logger.log_event("QUANTUM_QEC", "Entanglement clock checked. Qubit error correction locked.");
-    std::vector<uint8_t> final_packet = serialize_ccsds_packet(0x042A, 1025, "COGNITIVE_FREQUENCY_SWITCH_SUCCESS");
-    logger.log_event("CCSDS_PROT", "CCSDS Frame wrapped. Total package network footprint: " + std::to_string(final_packet.size()) + " bytes.");
+    std::vector<uint8_t> final_packet = serialize_ccsds_packet(0x042A, 1025, "GALACTIC_COGNITIVE_FRAME_LOCK");
+    logger.log_event("CCSDS_PROT", "CCSDS Frame wrapped. Footprint: " + std::to_string(final_packet.size()) + " bytes.");
 
-    logger.log_event("SYSTEM", "=== COGNITIVE TRANSMISSION LOOP RE-SHIELDED AND LOCKED ===");
+    logger.log_event("SYSTEM", "=== COGNITIVE TRANSMISSION LOOP LOCKED ===");
     return 0;
 }
