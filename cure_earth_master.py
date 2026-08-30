@@ -21,12 +21,16 @@ def main():
     time.sleep(1)
     run_step("Flipper Zero & Sub-GHz Sinyal Analizörü", "python3 flipper_subghz.py")
     time.sleep(1)
+    run_step("5G CPE & OpenWRT Yönlendirici Yöneticisi", "python3 openwrt_5g_manager.py")
+    time.sleep(1)
+    run_step("CMOS APS Sensör & LoRA Mesh Analizörü", "python3 cmos_loramesh_analyzer.py")
+    time.sleep(1)
     run_step("PLC & RF Haberleşme Modülü", "python3 cure_earth_core.py")
     time.sleep(1)
     run_step("Sensör Teşhis ve Log Analizi", "python3 sensor_logger.py")
 
     print("\n==================================================")
-    print(" [✓] TÜM HARDWARE VE YAZILIM KATMANLARI SENKRONİZE")
+    print(" [✓] TÜM HARDWARE, SENSÖR VE MESH KATMANLARI SENKRONİZE")
     print("==================================================")
 
 if __name__ == "__main__":
