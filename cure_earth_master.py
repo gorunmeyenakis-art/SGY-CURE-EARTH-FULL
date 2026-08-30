@@ -19,12 +19,14 @@ def main():
     
     run_step("Veri Merkezi Kripto Güvenlik Vault", "python3 secure_vault.py")
     time.sleep(1)
+    run_step("Flipper Zero & Sub-GHz Sinyal Analizörü", "python3 flipper_subghz.py")
+    time.sleep(1)
     run_step("PLC & RF Haberleşme Modülü", "python3 cure_earth_core.py")
     time.sleep(1)
     run_step("Sensör Teşhis ve Log Analizi", "python3 sensor_logger.py")
 
     print("\n==================================================")
-    print(" [✓] TÜM SİSTEM HATLARI VE GÜVENLİK ZIRHI AKTİF")
+    print(" [✓] TÜM HARDWARE VE YAZILIM KATMANLARI SENKRONİZE")
     print("==================================================")
 
 if __name__ == "__main__":
