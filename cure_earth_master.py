@@ -17,16 +17,14 @@ def main():
     print("  SGY-CURE-EARTH TEK TIK OTONOM AR-GE MERKEZİ     ")
     print("==================================================")
     
-    # Adım 1: PLC ve RF Simülasyonu
+    run_step("Veri Merkezi Kripto Güvenlik Vault", "python3 secure_vault.py")
+    time.sleep(1)
     run_step("PLC & RF Haberleşme Modülü", "python3 cure_earth_core.py")
     time.sleep(1)
-    
-    # Adım 2: Sensör Teşhis ve Log Analizi
     run_step("Sensör Teşhis ve Log Analizi", "python3 sensor_logger.py")
-    time.sleep(1)
 
     print("\n==================================================")
-    print(" [✓] TÜM SİSTEM HATLARI STABİL VE ÇALIŞIR DURUMDA")
+    print(" [✓] TÜM SİSTEM HATLARI VE GÜVENLİK ZIRHI AKTİF")
     print("==================================================")
 
 if __name__ == "__main__":
