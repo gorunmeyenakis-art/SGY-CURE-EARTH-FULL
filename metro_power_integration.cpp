@@ -8,10 +8,13 @@
 #include <iomanip>
 
 struct MetroLineState {
-    double third_rail_voltage = 750.0;
+    double third_rail_voltage;
     double current_draw_amps;
     double regen_power_kw;
     bool regenerative_braking_active;
+
+    MetroLineState(double v = 750.0, double i = 1200.0, double r = 450.0, bool active = true)
+        : third_rail_voltage(v), current_draw_amps(i), regen_power_kw(r), regenerative_braking_active(active) {}
 };
 
 class MetroPowerGridIntegration {
@@ -40,7 +43,7 @@ public:
         ss << "[" << std::put_time(std::localtime(&in_time_t), "%Y-%m-%d %H:%M:%S") << "] "
            << "[METRO_GRID_INTEGRATION] Node: " << node_id 
            << " | Available Power: " << energy_kw << " kW"
-           << " | Cloud Node Load: " << cloud_load_percentage << "%";
+           << " | Cloud Node Load: " << std::fixed << std::setprecision(2) << cloud_load_percentage << "%";
 
         std::cout << ss.str() << std::endl;
         if (log_file.is_open()) {
@@ -52,7 +55,7 @@ public:
 
 int main() {
     MetroPowerGridIntegration grid_manager("nasa_mission_telemetry.log");
-    MetroLineState train_1 = {750.0, 1200.0, 450.0, true}; 
+    MetroLineState train_1(750.0, 1200.0, 450.0, true); 
 
     double available_kw = grid_manager.calculate_available_energy(train_1);
     double allocated_cloud_capacity = (available_kw / 1500.0) * 100.0;
