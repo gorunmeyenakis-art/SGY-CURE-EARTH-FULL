@@ -208,3 +208,13 @@
 {"timestamp": "2026-08-30T14:33:09.305701", "voltage_v": 0.32, "status": "GEVSEK_KABLO"}
 {"timestamp": "2026-08-30T14:33:09.507994", "voltage_v": 0.65, "status": "MISCALIBRATION"}
 {"timestamp": "2026-08-30T14:33:09.710814", "voltage_v": 0.28, "status": "GEVSEK_KABLO"}
+{"timestamp": "2026-08-30T14:34:40.335895", "voltage_v": 3.81, "status": "NORMAL"}
+{"timestamp": "2026-08-30T14:34:40.537969", "voltage_v": 1.97, "status": "NORMAL"}
+{"timestamp": "2026-08-30T14:34:40.740292", "voltage_v": 1.13, "status": "MISCALIBRATION"}
+{"timestamp": "2026-08-30T14:34:40.942656", "voltage_v": 4.48, "status": "NORMAL"}
+{"timestamp": "2026-08-30T14:34:41.145270", "voltage_v": 0.71, "status": "MISCALIBRATION"}
+{"timestamp": "2026-08-30T14:34:41.347744", "voltage_v": 4.22, "status": "NORMAL"}
+{"timestamp": "2026-08-30T14:34:41.549965", "voltage_v": 1.13, "status": "MISCALIBRATION"}
+{"timestamp": "2026-08-30T14:34:41.752604", "voltage_v": 2.99, "status": "NORMAL"}
+{"timestamp": "2026-08-30T14:34:41.955220", "voltage_v": 1.28, "status": "NORMAL"}
+{"timestamp": "2026-08-30T14:34:42.158480", "voltage_v": 3.86, "status": "NORMAL"}
