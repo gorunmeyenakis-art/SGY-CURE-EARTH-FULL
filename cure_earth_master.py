@@ -17,6 +17,8 @@ def main():
     print("  SGY-CURE-EARTH TEK TIK OTONOM AR-GE MERKEZİ     ")
     print("==================================================")
     
+    run_step("Sabit Boyutlu Kripto & Dolgu Modülü (1339-Byte)", "python3 vault_padding.py")
+    time.sleep(1)
     run_step("Veri Merkezi Kripto Güvenlik Vault", "python3 secure_vault.py")
     time.sleep(1)
     run_step("Flipper Zero & Sub-GHz Sinyal Analizörü", "python3 flipper_subghz.py")
@@ -30,7 +32,7 @@ def main():
     run_step("Sensör Teşhis ve Log Analizi", "python3 sensor_logger.py")
 
     print("\n==================================================")
-    print(" [✓] TÜM HARDWARE, SENSÖR VE MESH KATMANLARI SENKRONİZE")
+    print(" [✓] TÜM KRİPTO, HARDWARE VE MESH KATMANLARI TAM ENTEGRE")
     print("==================================================")
 
 if __name__ == "__main__":

@@ -88,3 +88,13 @@
 {"timestamp": "2026-08-30T10:28:05.048845", "voltage_v": 0.64, "status": "MISCALIBRATION"}
 {"timestamp": "2026-08-30T10:28:05.249848", "voltage_v": 2.98, "status": "NORMAL"}
 {"timestamp": "2026-08-30T10:28:05.454324", "voltage_v": 1.82, "status": "NORMAL"}
+{"timestamp": "2026-08-30T10:29:34.768823", "voltage_v": 2.21, "status": "NORMAL"}
+{"timestamp": "2026-08-30T10:29:34.972121", "voltage_v": 3.67, "status": "NORMAL"}
+{"timestamp": "2026-08-30T10:29:35.174258", "voltage_v": 2.52, "status": "NORMAL"}
+{"timestamp": "2026-08-30T10:29:35.376675", "voltage_v": 1.04, "status": "MISCALIBRATION"}
+{"timestamp": "2026-08-30T10:29:35.581024", "voltage_v": 1.35, "status": "NORMAL"}
+{"timestamp": "2026-08-30T10:29:35.785373", "voltage_v": 4.33, "status": "NORMAL"}
+{"timestamp": "2026-08-30T10:29:35.988393", "voltage_v": 2.28, "status": "NORMAL"}
+{"timestamp": "2026-08-30T10:29:36.190751", "voltage_v": 3.09, "status": "NORMAL"}
+{"timestamp": "2026-08-30T10:29:36.393402", "voltage_v": 3.92, "status": "NORMAL"}
+{"timestamp": "2026-08-30T10:29:36.596080", "voltage_v": 3.15, "status": "NORMAL"}
