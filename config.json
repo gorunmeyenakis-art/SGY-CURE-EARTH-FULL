@@ -1,0 +1,6 @@
+{
+    "api_keys": {
+        "abuseipdb": "SIZIN_ABUSEIPDB_API_KEYINIZ",
+        "virustotal": "SIZIN_VIRUSTOTAL_API_KEYINIZ"
+    }
+}
